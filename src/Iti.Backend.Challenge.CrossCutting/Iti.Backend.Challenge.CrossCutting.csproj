@@ -1,11 +1,21 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+	<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Iti.Backend.Challenge.Application\Iti.Backend.Challenge.Application.csproj" />
+    <ProjectReference Include="..\Iti.Backend.Challenge.Contract\Iti.Backend.Challenge.Contract.csproj" />
+    <ProjectReference Include="..\Iti.Backend.Challenge.Core\Iti.Backend.Challenge.Core.csproj" />
+    <ProjectReference Include="..\Iti.Backend.Challenge.Provider\Iti.Backend.Challenge.Provider.csproj" />
   </ItemGroup>
 
 </Project>

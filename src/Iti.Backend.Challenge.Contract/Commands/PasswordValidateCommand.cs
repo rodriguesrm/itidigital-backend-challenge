@@ -8,8 +8,15 @@ namespace Iti.Backend.Challenge.Contract.Commands
     /// Validate password command contract
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class PasswordValidateCommands : IRequest<CommandResultBase<bool>>
+    public class PasswordValidateCommands : IRequest<CommandResult<bool>>
     {
+
+        public PasswordValidateCommands() : this(null) { }
+
+        public PasswordValidateCommands(string password)
+        {
+            Password = password;
+        }
 
         /// <summary>
         /// Password to validate
@@ -19,7 +26,7 @@ namespace Iti.Backend.Challenge.Contract.Commands
         /// <summary>
         /// Response data 
         /// </summary>
-        public CommandResultBase<bool> Response { get; set; }
+        public CommandResult<bool> Response { get; set; }
 
     }
 }

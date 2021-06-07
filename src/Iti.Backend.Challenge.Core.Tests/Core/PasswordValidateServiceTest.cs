@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Moq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,19 +20,19 @@ namespace Iti.Backend.Challenge.Core.Tests.Core
 
         [Theory]
         [InlineData("", false, "PasswordEmpty")]
-        [InlineData("aa", false, "RepeatedChar", "LetrasMaiusculas", "Numeros", "CaracteresEspeciais", "Tamanho")]
-        [InlineData("ab", false, "LetrasMaiusculas", "Numeros", "CaracteresEspeciais", "Tamanho")]
-        [InlineData("7182935", false, "LetrasMinusculas", "LetrasMaiusculas", "CaracteresEspeciais", "Tamanho")]
-        [InlineData("71829357", false, "LetrasMinusculas", "LetrasMaiusculas", "CaracteresEspeciais", "RepeatedChar")]
-        [InlineData("71829350", false, "LetrasMinusculas", "LetrasMaiusculas", "CaracteresEspeciais")]
-        [InlineData("7182#350", false, "LetrasMinusculas", "LetrasMaiusculas")]
-        [InlineData("AAAbbbCc", false, "RepeatedChar", "Numeros", "CaracteresEspeciais")]
+        [InlineData("aa", false, "RepeatedChar", "CapitalLetters", "Numbers", "SpecialCharacters", "Length")]
+        [InlineData("ab", false, "CapitalLetters", "Numbers", "SpecialCharacters", "Length")]
+        [InlineData("7182935", false, "SmallLetters", "CapitalLetters", "SpecialCharacters", "Length")]
+        [InlineData("71829357", false, "SmallLetters", "CapitalLetters", "SpecialCharacters", "RepeatedChar")]
+        [InlineData("71829350", false, "SmallLetters", "CapitalLetters", "SpecialCharacters")]
+        [InlineData("7182#350", false, "SmallLetters", "CapitalLetters")]
+        [InlineData("AAAbbbCc", false, "RepeatedChar", "Numbers", "SpecialCharacters")]
         [InlineData("AbTp9!foo", false, "RepeatedChar")]
         [InlineData("AbTp9!foA", false, "RepeatedChar")]
-        [InlineData("AbTp9! fok", false, "Espaco")]
+        [InlineData("AbTp9! fok", false, "Space")]
         [InlineData("AbTp9!fok", true)]
         [InlineData("A1b2#350$", true)]
-        public async Task ValidatePassword(string password, bool isValid, params string[] errorsList)
+        public async Task ValidatePassword_WhenConfiguraitonIsOk_ReturnResult(string password, bool isValid, params string[] errorsList)
         {
 
             IPasswordValidateConfigurationProvider provider = new PasswordValidateConfigurationProviderStub();
@@ -48,22 +49,46 @@ namespace Iti.Backend.Challenge.Core.Tests.Core
 
         }
 
+        [Fact]
+        public void ValidatePassword_WhenConfigurationNotExists_ThrowException()
+        {
+
+            string password = One<string>();
+
+            IPasswordValidateConfigurationProvider provider = new PasswordValidateConfigurationProviderStub(false);
+            PasswordValidateService service = new(provider);
+
+            Assert.ThrowsAsync<InvalidOperationException>(async () => await service.ValidatePassword(password));
+
+        }
+
         #region Stubs
 
         private class PasswordValidateConfigurationProviderStub : IPasswordValidateConfigurationProvider
         {
+
+            private bool _withResults;
+
+            public PasswordValidateConfigurationProviderStub(bool withResults = true)
+            {
+                _withResults = withResults;
+            }
+
             public Task<IDictionary<string, PasswordValidationRuleOption>> GetConfiguration()
             {
-
-                IDictionary<string, PasswordValidationRuleOption> rules = new Dictionary<string, PasswordValidationRuleOption>
+                IDictionary<string, PasswordValidationRuleOption> rules = new Dictionary<string, PasswordValidationRuleOption>();
+                if (_withResults)
                 {
-                    { "LetrasMinusculas", new PasswordValidationRuleOption() { Name = "LetrasMinusculas", Regex = "[a-z]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos uma letra minúscula" } },
-                    { "LetrasMaiusculas", new PasswordValidationRuleOption() { Name = "LetrasMaiusculas", Regex = "[A-Z]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos uma letra maiúscula" } },
-                    { "Numeros", new PasswordValidationRuleOption() { Name = "Numeros", Regex = "[\\d]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos uma letra minúscula" } },
-                    { "CaracteresEspeciais", new PasswordValidationRuleOption() { Name = "CaracteresEspeciais", Regex = "[!@#$%^&*()-+]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos um caracter especial válido, são válidos: ! @ # $ % ^ & * ( ) - +" } },
-                    { "Espaco", new PasswordValidationRuleOption() { Name = "Espaco", Regex = "[\\s]", IsValidWHenMatch = false, Message = "A senha não deve conter caracteres em branco/espaço" } },
-                    { "Tamanho", new PasswordValidationRuleOption() { Name = "Tamanho", Regex = "[\\w\\W\\d]{8,}$", IsValidWHenMatch = true, Message = "A senha deve conter no mínimo 8 posições" } }
-                };
+                    rules = new Dictionary<string, PasswordValidationRuleOption>
+                    {
+                        { "SmallLetters", new PasswordValidationRuleOption() { Name = "SmallLetters", Regex = "[a-z]", IsValidWHenMatch = true, Message = "Password must contain at least one lowercase letter" } },
+                        { "CapitalLetters", new PasswordValidationRuleOption() { Name = "CapitalLetters", Regex = "[A-Z]", IsValidWHenMatch = true, Message = "Password must contain at least one capital letter" } },
+                        { "Numbers", new PasswordValidationRuleOption() { Name = "Numbers", Regex = "[\\d]", IsValidWHenMatch = true, Message = "Password must contain numbers" } },
+                        { "SpecialCharacters", new PasswordValidationRuleOption() { Name = "SpecialCharacters", Regex = "[!@#$%^&*()-+]", IsValidWHenMatch = true, Message = "Password must contain at least one valid special character, the following are valid: ! @ # $ % ^ & * ( ) - +" } },
+                        { "Length", new PasswordValidationRuleOption() { Name = "Length", Regex = "[\\w\\W\\d]{8,}$", IsValidWHenMatch = true, Message = "Password must have a minimum length of 8 characters" } },
+                        { "Space", new PasswordValidationRuleOption() { Name = "Space", Regex = "[\\s]", IsValidWHenMatch = false, Message = "Password must not contain space characters" } }
+                    };
+                }
                 return Task.FromResult(rules);
             }
         }

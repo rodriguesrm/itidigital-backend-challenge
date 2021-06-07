@@ -2,15 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>919d5d6f-b011-48fc-b85c-fc10a2f0f722</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
+    <PackageReference Include="RSoft.Logs" Version="1.1.0-rc1.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Iti.Backend.Challenge.Application\Iti.Backend.Challenge.Application.csproj" />
+    <ProjectReference Include="..\Iti.Backend.Challenge.Contract\Iti.Backend.Challenge.Contract.csproj" />
+    <ProjectReference Include="..\Iti.Backend.Challenge.CrossCutting\Iti.Backend.Challenge.CrossCutting.csproj" />
   </ItemGroup>
 
 </Project>

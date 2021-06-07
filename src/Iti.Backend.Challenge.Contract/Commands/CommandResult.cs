@@ -8,24 +8,18 @@ namespace Iti.Backend.Challenge.Contract
     /// Command result base contract
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class CommandResultBase<TResponse>
+    public class CommandResult<TResponse>
     {
-
-        /// <summary>
-        /// Indicates the success of the operation
-        /// </summary>
-        public bool Success { get; set; }
-
-
-        /// <summary>
-        /// Errors dictionary
-        /// </summary>
-        public IDictionary<string, string> Errors { get; set; }
 
         /// <summary>
         /// Response data object
         /// </summary>
         public TResponse Response { get; set; }
+
+        /// <summary>
+        /// Errors dictionary
+        /// </summary>
+        public IDictionary<string, string> Errors { get; set; }
 
     }
 }
