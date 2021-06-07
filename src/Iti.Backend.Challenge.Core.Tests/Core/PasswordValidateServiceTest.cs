@@ -57,12 +57,12 @@ namespace Iti.Backend.Challenge.Core.Tests.Core
 
                 IDictionary<string, PasswordValidationRuleOption> rules = new Dictionary<string, PasswordValidationRuleOption>
                 {
-                    { "LetrasMinusculas", new PasswordValidationRuleOption() { Name = "LetrasMinusculas", Regex = "[a-z]", Message = "A senha deve conter ao menos uma letra minúscula" } },
-                    { "LetrasMaiusculas", new PasswordValidationRuleOption() { Name = "LetrasMaiusculas", Regex = "[A-Z]", Message = "A senha deve conter ao menos uma letra maiúscula" } },
-                    { "Numeros", new PasswordValidationRuleOption() { Name = "Numeros", Regex = "[\\d]", Message = "A senha deve conter ao menos uma letra minúscula" } },
-                    { "CaracteresEspeciais", new PasswordValidationRuleOption() { Name = "CaracteresEspeciais", Regex = "[!@#$%^&*()-+]", Message = "A senha deve conter ao menos um caracter especial válido, são válidos: ! @ # $ % ^ & * ( ) - +" } },
-                    { "Espaco", new PasswordValidationRuleOption() { Name = "Espaco", Regex = "[^\\S]$", Message = "A senha não deve conter caracteres em branco/espaço" } },
-                    { "Tamanho", new PasswordValidationRuleOption() { Name = "Tamanho", Regex = "[\\w\\W\\d]{8,}$", Message = "A senha deve conter no mínimo 8 posições" } }
+                    { "LetrasMinusculas", new PasswordValidationRuleOption() { Name = "LetrasMinusculas", Regex = "[a-z]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos uma letra minúscula" } },
+                    { "LetrasMaiusculas", new PasswordValidationRuleOption() { Name = "LetrasMaiusculas", Regex = "[A-Z]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos uma letra maiúscula" } },
+                    { "Numeros", new PasswordValidationRuleOption() { Name = "Numeros", Regex = "[\\d]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos uma letra minúscula" } },
+                    { "CaracteresEspeciais", new PasswordValidationRuleOption() { Name = "CaracteresEspeciais", Regex = "[!@#$%^&*()-+]", IsValidWHenMatch = true, Message = "A senha deve conter ao menos um caracter especial válido, são válidos: ! @ # $ % ^ & * ( ) - +" } },
+                    { "Espaco", new PasswordValidationRuleOption() { Name = "Espaco", Regex = "[\\s]", IsValidWHenMatch = false, Message = "A senha não deve conter caracteres em branco/espaço" } },
+                    { "Tamanho", new PasswordValidationRuleOption() { Name = "Tamanho", Regex = "[\\w\\W\\d]{8,}$", IsValidWHenMatch = true, Message = "A senha deve conter no mínimo 8 posições" } }
                 };
                 return Task.FromResult(rules);
             }

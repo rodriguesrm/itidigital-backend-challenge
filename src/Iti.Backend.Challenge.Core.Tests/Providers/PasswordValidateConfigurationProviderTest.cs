@@ -19,7 +19,7 @@ namespace Iti.Backend.Challenge.Core.Tests.Providers
         public void GetConfiguration_ReturnResult()
         {
 
-            PasswordValidationRuleOption rule = new() { Name = A<string>(), Message = A<string>(), Regex = A<string>() };
+            PasswordValidationRuleOption rule = new() { Name = One<string>(), Message = One<string>(), Regex = One<string>() };
             PasswordOption passwordOption = new() { ValidationRules = new List<PasswordValidationRuleOption>() { rule } };
             IOptions<PasswordOption> options = Mock.Of<IOptions<PasswordOption>>(opt => opt.Value == passwordOption);
 

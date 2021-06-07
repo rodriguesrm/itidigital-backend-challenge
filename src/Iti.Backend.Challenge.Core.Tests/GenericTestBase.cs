@@ -22,7 +22,7 @@ namespace Iti.Backend.Challenge.Core.Tests
         /// Create a mock instance
         /// </summary>
         /// <typeparam name="T">Object type</typeparam>
-        protected T A<T>()
+        protected T One<T>()
             => _fixture.Create<T>();
 
         #endregion

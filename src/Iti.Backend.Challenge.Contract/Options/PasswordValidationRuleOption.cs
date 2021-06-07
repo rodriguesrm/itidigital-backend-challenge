@@ -21,6 +21,11 @@ namespace Iti.Backend.Challenge.Contract.Options
         public string Regex { get; set; }
 
         /// <summary>
+        /// Indicates whether it is valid when the regular expression results in a match or not
+        /// </summary>
+        public bool IsValidWHenMatch { get; set; } = true;
+
+        /// <summary>
         /// Message to use for not match validation
         /// </summary>
         public string Message { get; set; }

@@ -47,7 +47,7 @@ namespace Iti.Backend.Challenge.Core.Services
                 {
                     PasswordValidationRuleOption rule = config.Value;
                     bool isMatch = Regex.IsMatch(password, rule.Regex);
-                    if (!isMatch)
+                    if (!(isMatch == rule.IsValidWHenMatch))
                         errors.Add(rule.Name, rule.Message);
                 }
 
