@@ -20,8 +20,8 @@ namespace Iti.Backend.Challenge.Core.Tests.Providers
         {
 
             PasswordValidationRuleOption rule = new() { Name = A<string>(), Message = A<string>(), Regex = A<string>() };
-            PasswordOption passwordOption = new() { Validation = new List<PasswordValidationRuleOption>() { rule } };
-            IOptions<PasswordOption> options = Mock.Of<IOptions<PasswordOption>>(opt => opt.Value== passwordOption);
+            PasswordOption passwordOption = new() { ValidationRules = new List<PasswordValidationRuleOption>() { rule } };
+            IOptions<PasswordOption> options = Mock.Of<IOptions<PasswordOption>>(opt => opt.Value == passwordOption);
 
             PasswordValidateConfigurationProvider provider = new(options);
             IDictionary<string, PasswordValidationRuleOption> result = provider.GetConfiguration().Result;

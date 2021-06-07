@@ -31,7 +31,7 @@ namespace Iti.Backend.Challenge.Provider
             IDictionary<string, PasswordValidationRuleOption> result = new Dictionary<string, PasswordValidationRuleOption>();
 
             if (_passwordOptions != null)
-                result = _passwordOptions.Validation?.ToDictionary(k => k.Regex, v => v);
+                result = _passwordOptions.ValidationRules?.ToDictionary(k => k.Regex, v => v);
 
             return Task.FromResult(result);
         }

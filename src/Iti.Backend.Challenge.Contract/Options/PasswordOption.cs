@@ -14,7 +14,7 @@ namespace Iti.Backend.Challenge.Contract.Options
         /// <summary>
         /// Password validation rules
         /// </summary>
-        public IEnumerable<PasswordValidationRuleOption> Validation { get; set; }
+        public IEnumerable<PasswordValidationRuleOption> ValidationRules { get; set; }
 
     }
 }
