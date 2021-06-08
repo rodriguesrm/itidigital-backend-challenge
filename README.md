@@ -1,5 +1,7 @@
 # iti Digital Backend Challenge
 
+[![Build & Test](https://github.com/rodriguesrm/itidigital-backend-challenge/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/rodriguesrm/itidigital-backend-challenge/actions/workflows/dotnet-core.yml)
+
 Api para cumprir o desafio de criar uma API robusta que possua inicialmente um endpoint para validação de senha.
 
 ## Critério de validação
