@@ -77,12 +77,12 @@ namespace Iti.Backend.Challenge.Core.Tests.Core
                 {
                     rules = new Dictionary<string, PasswordValidationRuleOption>
                     {
-                        { "SmallLetters", new PasswordValidationRuleOption() { Name = "SmallLetters", Regex = "[a-z]", IsValidWHenMatch = true, Message = "Password must contain at least one lowercase letter" } },
-                        { "CapitalLetters", new PasswordValidationRuleOption() { Name = "CapitalLetters", Regex = "[A-Z]", IsValidWHenMatch = true, Message = "Password must contain at least one capital letter" } },
-                        { "Numbers", new PasswordValidationRuleOption() { Name = "Numbers", Regex = "[\\d]", IsValidWHenMatch = true, Message = "Password must contain numbers" } },
-                        { "SpecialCharacters", new PasswordValidationRuleOption() { Name = "SpecialCharacters", Regex = "[!@#$%^&*()-+]", IsValidWHenMatch = true, Message = "Password must contain at least one valid special character, the following are valid: ! @ # $ % ^ & * ( ) - +" } },
-                        { "Length", new PasswordValidationRuleOption() { Name = "Length", Regex = "[\\w\\W\\d]{9,}$", IsValidWHenMatch = true, Message = "Password must have a minimum length of 9 characters" } },
-                        { "Space", new PasswordValidationRuleOption() { Name = "Space", Regex = "[\\s]", IsValidWHenMatch = false, Message = "Password must not contain space characters" } }
+                        { "SmallLetters", new PasswordValidationRuleOption() { Name = "SmallLetters", Regex = "[a-z]", IsValidWhenMatch = true, Message = "Password must contain at least one lowercase letter" } },
+                        { "CapitalLetters", new PasswordValidationRuleOption() { Name = "CapitalLetters", Regex = "[A-Z]", IsValidWhenMatch = true, Message = "Password must contain at least one capital letter" } },
+                        { "Numbers", new PasswordValidationRuleOption() { Name = "Numbers", Regex = "[\\d]", IsValidWhenMatch = true, Message = "Password must contain numbers" } },
+                        { "SpecialCharacters", new PasswordValidationRuleOption() { Name = "SpecialCharacters", Regex = "[!@#$%^&*()-+]", IsValidWhenMatch = true, Message = "Password must contain at least one valid special character, the following are valid: ! @ # $ % ^ & * ( ) - +" } },
+                        { "Length", new PasswordValidationRuleOption() { Name = "Length", Regex = "[\\w\\W\\d]{9,}$", IsValidWhenMatch = true, Message = "Password must have a minimum length of 9 characters" } },
+                        { "Space", new PasswordValidationRuleOption() { Name = "Space", Regex = "[\\s]", IsValidWhenMatch = false, Message = "Password must not contain space characters" } }
                     };
                 }
                 return Task.FromResult(rules);
