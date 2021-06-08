@@ -19,10 +19,10 @@ namespace Iti.Backend.Challenge.Core.Tests.Core
         [InlineData("aa", false, "RepeatedChar", "CapitalLetters", "Numbers", "SpecialCharacters", "Length")]
         [InlineData("ab", false, "CapitalLetters", "Numbers", "SpecialCharacters", "Length")]
         [InlineData("7182935", false, "SmallLetters", "CapitalLetters", "SpecialCharacters", "Length")]
-        [InlineData("71829357", false, "SmallLetters", "CapitalLetters", "SpecialCharacters", "RepeatedChar")]
-        [InlineData("71829350", false, "SmallLetters", "CapitalLetters", "SpecialCharacters")]
-        [InlineData("7182#350", false, "SmallLetters", "CapitalLetters")]
-        [InlineData("AAAbbbCc", false, "RepeatedChar", "Numbers", "SpecialCharacters")]
+        [InlineData("71829357", false, "SmallLetters", "CapitalLetters", "SpecialCharacters", "RepeatedChar", "Length")]
+        [InlineData("71829350", false, "SmallLetters", "CapitalLetters", "SpecialCharacters", "Length")]
+        [InlineData("7182#350", false, "SmallLetters", "CapitalLetters", "Length")]
+        [InlineData("AAAbbbCc", false, "RepeatedChar", "Numbers", "SpecialCharacters", "Length")]
         [InlineData("AbTp9!foo", false, "RepeatedChar")]
         [InlineData("AbTp9!foA", false, "RepeatedChar")]
         [InlineData("AbTp9! fok", false, "Space")]
@@ -81,7 +81,7 @@ namespace Iti.Backend.Challenge.Core.Tests.Core
                         { "CapitalLetters", new PasswordValidationRuleOption() { Name = "CapitalLetters", Regex = "[A-Z]", IsValidWHenMatch = true, Message = "Password must contain at least one capital letter" } },
                         { "Numbers", new PasswordValidationRuleOption() { Name = "Numbers", Regex = "[\\d]", IsValidWHenMatch = true, Message = "Password must contain numbers" } },
                         { "SpecialCharacters", new PasswordValidationRuleOption() { Name = "SpecialCharacters", Regex = "[!@#$%^&*()-+]", IsValidWHenMatch = true, Message = "Password must contain at least one valid special character, the following are valid: ! @ # $ % ^ & * ( ) - +" } },
-                        { "Length", new PasswordValidationRuleOption() { Name = "Length", Regex = "[\\w\\W\\d]{8,}$", IsValidWHenMatch = true, Message = "Password must have a minimum length of 8 characters" } },
+                        { "Length", new PasswordValidationRuleOption() { Name = "Length", Regex = "[\\w\\W\\d]{9,}$", IsValidWHenMatch = true, Message = "Password must have a minimum length of 9 characters" } },
                         { "Space", new PasswordValidationRuleOption() { Name = "Space", Regex = "[\\s]", IsValidWHenMatch = false, Message = "Password must not contain space characters" } }
                     };
                 }
