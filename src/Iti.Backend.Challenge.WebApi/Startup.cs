@@ -1,5 +1,5 @@
 using Iti.Backend.Challenge.CrossCutting.IoC;
-using Iti.Backend.Challenge.HostApi.Filter;
+using Iti.Backend.Challenge.WebApi.Filter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Iti.Backend.Challenge.HostApi
+namespace Iti.Backend.Challenge.WebApi
 {
 
     /// <summary>
@@ -50,7 +50,7 @@ namespace Iti.Backend.Challenge.HostApi
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Iti.Backend.Challenge.HostApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Iti.Backend.Challenge.WebApi", Version = "v1" });
             });
 
             services.Configure<ApiBehaviorOptions>(opt =>
@@ -73,7 +73,7 @@ namespace Iti.Backend.Challenge.HostApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Iti.Backend.Challenge.HostApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Iti.Backend.Challenge.WebApi v1"));
             }
 
             app.UseRouting();

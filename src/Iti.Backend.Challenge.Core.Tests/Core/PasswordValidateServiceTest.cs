@@ -1,18 +1,14 @@
-﻿using AutoFixture.Kernel;
-using Iti.Backend.Challenge.Contract.Options;
+﻿using Iti.Backend.Challenge.Contract.Options;
 using Iti.Backend.Challenge.Core.Ports;
 using Iti.Backend.Challenge.Core.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Moq;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace Iti.Backend.Challenge.Core.Tests.Core
 {
-    
+
     public class PasswordValidateServiceTest : GenericTestBase
     {
 

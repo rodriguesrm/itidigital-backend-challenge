@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Iti.Backend.Challenge.HostApi.Filter
+namespace Iti.Backend.Challenge.WebApi.Filter
 {
 
     /// <summary>

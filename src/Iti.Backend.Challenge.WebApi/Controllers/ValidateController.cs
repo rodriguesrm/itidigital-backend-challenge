@@ -1,13 +1,13 @@
 ﻿using Iti.Backend.Challenge.Contract;
 using Iti.Backend.Challenge.Contract.Commands;
-using Iti.Backend.Challenge.HostApi.Models;
+using Iti.Backend.Challenge.WebApi.Models;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Iti.Backend.Challenge.HostApi.Controllers
+namespace Iti.Backend.Challenge.WebApi.Controllers
 {
 
     /// <summary>

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using RSoft.Logs.Extensions;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Iti.Backend.Challenge.HostApi
+namespace Iti.Backend.Challenge.WebApi
 {
 
     /// <summary>

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Iti.Backend.Challenge.HostApi.Models
+namespace Iti.Backend.Challenge.WebApi.Models
 {
 
     /// <summary>

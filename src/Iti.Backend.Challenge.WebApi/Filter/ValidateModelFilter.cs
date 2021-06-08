@@ -1,11 +1,11 @@
-﻿using Iti.Backend.Challenge.HostApi.Models;
+﻿using Iti.Backend.Challenge.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Iti.Backend.Challenge.HostApi.Filter
+namespace Iti.Backend.Challenge.WebApi.Filter
 {
 
     /// <summary>

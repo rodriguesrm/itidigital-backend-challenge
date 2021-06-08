@@ -47,7 +47,7 @@ namespace Iti.Backend.Challenge.CrossCutting.IoC
 
             List<string> assembliesNames = new List<string>()
             {
-                "Iti.Backend.Challenge.HostApi",
+                "Iti.Backend.Challenge.WebApi",
                 "Iti.Backend.Challenge.Application"
             };
 
