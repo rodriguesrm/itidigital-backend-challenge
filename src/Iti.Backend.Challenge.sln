@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iti.Backend.Challenge.Provi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iti.Backend.Challenge.CrossCutting", "Iti.Backend.Challenge.CrossCutting\Iti.Backend.Challenge.CrossCutting.csproj", "{67FD477C-2876-45E0-87C9-AEC7A3AC3BFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iti.Backend.Challenge.Core.Tests", "Iti.Backend.Challenge.Core.Tests\Iti.Backend.Challenge.Core.Tests.csproj", "{3450BA1E-C9D5-4343-8484-61280F4A4D35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iti.Backend.Challenge.Tests", "Iti.Backend.Challenge.Tests\Iti.Backend.Challenge.Tests.csproj", "{3450BA1E-C9D5-4343-8484-61280F4A4D35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
